@@ -15,3 +15,6 @@ Time estimation:
 - Research for best option to read CSVs. Used AI to research best option
 - Implement CSV adapter
 - Implement CSV mapper for weather object
+
+~10 Minutes
+- Implement weather service to fetch smallest temperature spread
