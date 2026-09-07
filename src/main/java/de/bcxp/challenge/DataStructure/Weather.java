@@ -26,6 +26,16 @@ public class Weather {
 		
 	}
 	
+	public Weather(int day, int minTemperature, int maxTemperature) {
+		this.Day = day;
+		this.MinimumTemperature = minTemperature;
+		this.MaximumTemperature = maxTemperature;
+	}
+	
+	public int getTemperatureSpread() {
+		return Math.abs(this.MaximumTemperature - this.MinimumTemperature);
+	}
+	
 	/*
 	 * Getters and Setters
 	 */
