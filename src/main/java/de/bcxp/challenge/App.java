@@ -5,6 +5,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import de.bcxp.challenge.Service.CountryService;
 import de.bcxp.challenge.Service.WeatherService;
 
 /**
@@ -21,16 +22,20 @@ public final class App {
     public static void main(String... args) throws URISyntaxException {
     	
     	// Determine the file paths of the different CSV files
-    	URL url = App.class.getResource("/de/bcxp/challenge/weather.csv");
-    	Path weatherFilePath = Paths.get(url.toURI());
+    	URL weatherUrl = App.class.getResource("/de/bcxp/challenge/weather.csv");
+    	Path weatherFilePath = Paths.get(weatherUrl.toURI());
+    	
+    	URL countriesUrl = App.class.getResource("/de/bcxp/challenge/countries.csv");
+    	Path countriesFilePath = Paths.get(countriesUrl.toURI());
 
-        // Your preparation code …
+        // Init services
     	WeatherService weatherService = new WeatherService();
+    	CountryService countryService = new CountryService();
 
         String dayWithSmallestTempSpread = "" + weatherService.fetchDayWithSmallestTemperatureSpread(weatherFilePath);
         System.out.printf("Day with smallest temperature spread: %s%n", dayWithSmallestTempSpread);
 
-        String countryWithHighestPopulationDensity = "Some country"; // Your population density analysis function call …
+        String countryWithHighestPopulationDensity = countryService.fetchCountryWithHighestPopulationDensity(countriesFilePath);
         System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);
     }
 }

@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVRecord;
 import de.bcxp.challenge.DataStructure.Country;
 import de.bcxp.challenge.IoAdapters.CsvAdapter;
 import de.bcxp.challenge.Utils.CsvColumnConfiguration;
+import de.bcxp.challenge.Utils.FormatterUtils;
 
 public class CountryCsvReader implements ICsvReader<Country> {
 	
@@ -33,8 +34,8 @@ public class CountryCsvReader implements ICsvReader<Country> {
 	public Country parseEntry(CSVRecord record) {
 		try {
 			var country = record.get(CsvColumnConfiguration.Country.COL_NAME_COUNTRY);
-			var population = Integer.parseInt(record.get(CsvColumnConfiguration.Country.COL_NAME_POPULATION));
-			var areaInKm2 = Integer.parseInt(record.get(CsvColumnConfiguration.Country.COL_NAME_AREA));
+			var population = (long)Double.parseDouble(FormatterUtils.normalizeStringNumberInEuropeanFormat(record.get(CsvColumnConfiguration.Country.COL_NAME_POPULATION)));
+			var areaInKm2 = Double.parseDouble(FormatterUtils.normalizeStringNumberInEuropeanFormat(record.get(CsvColumnConfiguration.Country.COL_NAME_AREA)));
 			return new Country(
 					country,
 					population,
@@ -44,5 +45,4 @@ public class CountryCsvReader implements ICsvReader<Country> {
 			return null;
 		}
 	}
-
 }

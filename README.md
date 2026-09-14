@@ -21,3 +21,6 @@ Time estimation:
 
 ~15 Minutes
 - Implement unit test for weather CSV reader and weather service
+
+~15 Minutes
+- Implement CSV reader for countries, extend CSV reader by delimiter configuration, and implement country service

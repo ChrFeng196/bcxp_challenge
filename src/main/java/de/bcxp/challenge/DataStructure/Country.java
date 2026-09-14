@@ -8,7 +8,7 @@ public class Country {
 	private String Capital;
 	private int Accession;
 	private long Population;
-	private long Area_inSquareKm;
+	private double Area_inSquareKm;
 	private long Gdp_inUSD;
 	private double HumanDevelopmentIndex;
 	private int Meps;
@@ -20,10 +20,17 @@ public class Country {
 		
 	}
 	
-	public Country(String name, long population, long area) {
+	public Country(String name, long population, double area) {
 		this.Name = name;
 		this.Population = population;
 		this.Area_inSquareKm = area;
+	}
+	
+	/*
+	 * Functions
+	 */
+	public double calculatePopulationDensity() {
+		return this.Population / this.Area_inSquareKm;
 	}
 	
 	/*
@@ -61,11 +68,11 @@ public class Country {
 		Population = population;
 	}
 
-	public long getArea_inSquareKm() {
+	public double getArea_inSquareKm() {
 		return Area_inSquareKm;
 	}
 
-	public void setArea_inSquareKm(long area_inSquareKm) {
+	public void setArea_inSquareKm(double area_inSquareKm) {
 		Area_inSquareKm = area_inSquareKm;
 	}
 
