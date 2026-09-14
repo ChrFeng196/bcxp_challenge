@@ -20,6 +20,12 @@ public class Country {
 		
 	}
 	
+	public Country(String name, long population, long area) {
+		this.Name = name;
+		this.Population = population;
+		this.Area_inSquareKm = area;
+	}
+	
 	/*
 	 * Getters and Setters
 	 */
