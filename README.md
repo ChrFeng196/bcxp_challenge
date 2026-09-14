@@ -27,3 +27,6 @@ Time estimation:
 
 ~15 Minutes
 - Implement unit tests for country reader and service
+
+~5 Minutes
+- Unit test for formatter utils
