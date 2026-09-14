@@ -21,7 +21,7 @@ public final class App {
     public static void main(String... args) throws URISyntaxException {
     	
     	// Determine the file paths of the different CSV files
-    	URL url = App.class.getResource("/weather.csv");
+    	URL url = App.class.getResource("/de/bcxp/challenge/weather.csv");
     	Path weatherFilePath = Paths.get(url.toURI());
 
         // Your preparation code …

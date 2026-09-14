@@ -18,3 +18,6 @@ Time estimation:
 
 ~10 Minutes
 - Implement weather service to fetch smallest temperature spread
+
+~15 Minutes
+- Implement unit test for weather CSV reader and weather service
