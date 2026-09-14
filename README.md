@@ -24,3 +24,6 @@ Time estimation:
 
 ~15 Minutes
 - Implement CSV reader for countries, extend CSV reader by delimiter configuration, and implement country service
+
+~15 Minutes
+- Implement unit tests for country reader and service
