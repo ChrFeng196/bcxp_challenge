@@ -22,7 +22,7 @@ public class CountryCsvReader implements ICsvReader<Country> {
 	public List<Country> fetchData(Path file) {
 		
 		try {
-			return CsvAdapter.read(file, this::parseEntry);
+			return CsvAdapter.read(file, this::parseEntry, ";");
 		} catch (IOException e) {
 			logger.error("Error occured while reading CSV file '" + file.getFileName() + "':", e);
 			return new ArrayList<>();

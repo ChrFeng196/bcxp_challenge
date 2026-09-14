@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVRecord;
 
 public class CsvAdapter {
 	
-	public static <T> List<T> read(Path file, Function<CSVRecord, T> rowMapper) throws IOException, FileNotFoundException {
+	public static <T> List<T> read(Path file, Function<CSVRecord, T> rowMapper, String delimiter) throws IOException, FileNotFoundException {
 		List<T> result = new ArrayList<>();
 		
 		if(!file.toFile().exists()) {
@@ -25,6 +25,7 @@ public class CsvAdapter {
 		try (Reader reader = Files.newBufferedReader(file);
 				CSVParser parser = CSVFormat.DEFAULT.builder()
 						.setHeader()
+						.setDelimiter(delimiter)
 						.setSkipHeaderRecord(true)
 						.get()
 						.parse(reader)) {
