@@ -4,10 +4,15 @@ import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.bcxp.challenge.DataStructure.Country;
 import de.bcxp.challenge.Readers.Csv.CountryCsvReader;
 
 public class CountryService {
+	
+	private static Logger logger = LoggerFactory.getLogger(CountryService.class);
 	
 	private CountryCsvReader countryCsvReader;
 	
@@ -22,6 +27,7 @@ public class CountryService {
 		if(highestPopulationDensity.get() != null) {
 			return highestPopulationDensity.get().getName();
 		}
+		logger.warn("No country with highest population density could be found");
 		return "None";
 	}
 }

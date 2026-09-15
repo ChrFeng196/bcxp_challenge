@@ -12,13 +12,20 @@ import java.util.function.Function;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.bcxp.challenge.Readers.Csv.CountryCsvReader;
 
 public class CsvAdapter {
+
+	private static Logger logger = LoggerFactory.getLogger(CsvAdapter.class);
 	
 	public static <T> List<T> read(Path file, Function<CSVRecord, T> rowMapper, String delimiter) throws IOException, FileNotFoundException {
 		List<T> result = new ArrayList<>();
 		
 		if(!file.toFile().exists()) {
+			logger.error("CSV file '" + file.toString() + "'");
 			throw new FileNotFoundException();
 		}
 		
