@@ -16,6 +16,7 @@ import de.bcxp.challenge.Service.WeatherService;
 public class TestWeatherService {
 	
 	private Path weatherFilePath;
+	private Path weatherEmptyFilePath;
     private WeatherCsvReader weatherCsvReader;
     private WeatherService weatherService;
 
@@ -24,6 +25,9 @@ public class TestWeatherService {
     	//For simplicity, we keep the test data in the same resource folder
 		URL url = App.class.getResource("/de/bcxp/challenge/weather_test.csv");
     	weatherFilePath = Paths.get(url.toURI());
+    	
+    	URL urlEmptyFile = App.class.getResource("/de/bcxp/challenge/weather_test_empty.csv");
+    	weatherEmptyFilePath = Paths.get(urlEmptyFile.toURI());
     	
     	weatherCsvReader = new WeatherCsvReader();
     	weatherService = new WeatherService();
@@ -34,6 +38,10 @@ public class TestWeatherService {
      */
 	@Test
 	public void TestWeatherCsvReader() {
+		//Check empty file
+		var weatherDataEmpty = weatherCsvReader.fetchData(weatherEmptyFilePath);
+		assertTrue(weatherDataEmpty.size() == 0);
+		
     	var weatherData = weatherCsvReader.fetchData(weatherFilePath);
     	
     	//Check whether all data were read

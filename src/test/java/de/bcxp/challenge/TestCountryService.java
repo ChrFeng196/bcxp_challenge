@@ -20,6 +20,7 @@ import de.bcxp.challenge.Service.WeatherService;
 public class TestCountryService {
 	
 	private Path countriesFilePath;
+	private Path countriesEmptyFilePath;
     private CountryCsvReader countryCsvReader;
     private CountryService countryService;
 
@@ -29,9 +30,14 @@ public class TestCountryService {
 		URL url = App.class.getResource("/de/bcxp/challenge/countries_test.csv");
     	countriesFilePath = Paths.get(url.toURI());
     	
+    	URL urlEmptyFile = App.class.getResource("/de/bcxp/challenge/countries_test_empty.csv");
+    	countriesEmptyFilePath = Paths.get(urlEmptyFile.toURI());
+    	
     	countryCsvReader = new CountryCsvReader();
     	countryService = new CountryService();
     }
+    
+    
     
     /*
      * Test calculating the population density
@@ -49,6 +55,10 @@ public class TestCountryService {
      */
 	@Test
 	public void TestCountryCsvReader() {
+		//Check empty file
+		var countryDataEmpty = countryCsvReader.fetchData(countriesEmptyFilePath);
+		assertTrue(countryDataEmpty.size() == 0);
+		
 		//Test CSV contains different number formatting too so that we can check whether the string number parsing worked well
     	var countryData = countryCsvReader.fetchData(countriesFilePath);
     	
